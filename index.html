@@ -43,6 +43,8 @@
         font-size: 16px;
         font-weight: 400;
         overflow-x: hidden;
+        width: 100%;
+        position: relative;
       }
 
       h1, h2, h3, h4 {
@@ -318,6 +320,7 @@
       @media (max-width: 768px) {
         .title-original {
           font-size: 28px;
+          padding: 0 10px;
         }
         
         .section-py {
@@ -333,11 +336,40 @@
           max-width: 100%;
         }
         
-        /* Аккуратный перенос заголовка в контактах */
+        /* Исправления для мобильной версии */
+        #home h1 {
+          font-size: 32px;
+          line-height: 1.2;
+        }
+        
+        #home h2 {
+          font-size: 24px;
+        }
+        
+        /* Заголовок в контактах */
         #contact .title-original {
           font-size: 24px;
           line-height: 1.3;
-          word-break: keep-all;
+          word-break: break-word;
+          hyphens: auto;
+        }
+        
+        /* Кнопки фильтров портфолио */
+        #portfolio .flex-wrap {
+          justify-content: center;
+          padding: 0 5px;
+        }
+        
+        .filter-btn {
+          padding: 6px 12px;
+          font-size: 14px;
+          margin: 2px;
+        }
+        
+        /* Бургер меню */
+        .mobile-nav {
+          width: 85vw;
+          max-width: 300px;
         }
       }
       
@@ -437,15 +469,28 @@
         flex-wrap: wrap;
       }
       
-      /* Отступы между отзывами при пролистывании */
-      .testimonials-track > div {
-        padding-right: 20px;
-      }
-      
-      /* Для мобильных - меньший отступ */
-      @media (max-width: 640px) {
-        .testimonials-track > div {
-          padding-right: 15px;
+      /* Для очень маленьких экранов */
+      @media (max-width: 375px) {
+        #home h1 {
+          font-size: 28px;
+        }
+        
+        #home h2 {
+          font-size: 20px;
+        }
+        
+        .btn-original {
+          padding: 10px 20px;
+          font-size: 14px;
+        }
+        
+        .filter-btn {
+          padding: 5px 10px;
+          font-size: 12px;
+        }
+        
+        #contact .title-original {
+          font-size: 22px;
         }
       }
     </style>
@@ -519,7 +564,7 @@
 
     <main class="bg-theme">
       <!-- Приветствие -->
-      <section id="home" class="section-py flex items-center mt-16 max-w-full overflow-hidden">
+      <section id="home" class="section-py flex items-center mt-16">
         <div class="max-w-[1200px] mx-auto container-padding w-full">
           <div class="flex flex-col lg:flex-row items-center justify-between gap-10">
             <div class="lg:w-1/2 w-full">
@@ -540,8 +585,8 @@
               </div>
             </div>
             
-            <div class="lg:w-1/2 flex justify-center mt-10 lg:mt-0 w-full sm:max-w-md mx-auto">
-              <div class="relative w-full max-w-[320px] sm:max-w-[400px] h-[570px] flex items-center justify-center">
+            <div class="lg:w-1/2 flex justify-center mt-10 lg:mt-0 w-full">
+              <div class="relative w-full max-w-[320px] sm:max-w-[400px] h-[570px] flex items-center justify-center mx-auto">
                 <img src="assets/images/photo.png" alt="Фото Вари" class="relative z-10 w-full h-full object-contain drop-shadow-[0_10px_30px_rgba(96,7,31,0.2)]">
                 <div class="photo-shadow"></div>
               </div>
@@ -551,7 +596,7 @@
       </section>
 
       <!-- Обо мне -->
-      <section id="about" class="section-py max-w-full overflow-hidden">
+      <section id="about" class="section-py">
         <div class="max-w-[1200px] mx-auto container-padding">
           <div class="max-w-3xl mx-auto text-center">
             <h2 class="title-original font-akony text-accent-dark">Обо мне</h2>
@@ -569,7 +614,7 @@
       </section>
 
       <!-- Навыки -->
-      <section id="skills" class="section-py bg-theme max-w-full overflow-hidden">
+      <section id="skills" class="section-py bg-theme">
         <div class="max-w-[1200px] mx-auto container-padding">
           <h2 class="title-original font-akony text-accent-dark">Навыки</h2>
           
@@ -638,11 +683,11 @@
       </section>
 
       <!-- Портфолио -->
-      <section id="portfolio" class="section-py max-w-full overflow-hidden">
+      <section id="portfolio" class="section-py">
         <div class="max-w-[1200px] mx-auto container-padding">
           <h2 class="title-original font-akony text-accent-dark">Портфолио</h2>
           
-          <div class="flex flex-wrap justify-center gap-3 mb-10">
+          <div class="flex flex-wrap justify-center gap-2 mb-10 px-2">
             <button class="filter-btn active" data-filter="all">
               Все работы
             </button>
@@ -701,7 +746,7 @@
       </section>
 
       <!-- Отзывы -->
-      <section class="section-py bg-accent/5 max-w-full overflow-hidden">
+      <section class="section-py bg-accent/5">
         <div class="max-w-[1200px] mx-auto container-padding">
           <h2 class="title-original font-akony text-accent-dark">Отзывы</h2>
           
@@ -710,7 +755,7 @@
               <div class="testimonials-track flex transition-transform duration-500" id="testimonialsTrack">
                 
                 <div class="min-w-full">
-                  <div class="testimonial-card bg-card rounded-theme p-8 shadow-theme border-l-4 border-accent testimonial-card-narrow mx-2">
+                  <div class="testimonial-card bg-card rounded-theme p-8 shadow-theme border-l-4 border-accent testimonial-card-narrow">
                     <p class="text-light italic mb-6 leading-relaxed text-base">
                       "Полностью доволен итоговым логотипом с жирафом. Была проделана
                       колоссальная работа над силуэтом. Спасибо Варваре, будем
@@ -727,7 +772,7 @@
                 
                
                 <div class="min-w-full">
-                  <div class="testimonial-card bg-card rounded-theme p-8 shadow-theme border-l-4 border-accent testimonial-card-narrow mx-2">
+                  <div class="testimonial-card bg-card rounded-theme p-8 shadow-theme border-l-4 border-accent testimonial-card-narrow">
                     <p class="text-light italic mb-6 leading-relaxed text-base">
                       Заказ был выполнен в кратчайшие сроки, спасибо Варваре за стилёвый детский дизайн и юмор :)
                     </p>
@@ -742,7 +787,7 @@
                 
                 
                 <div class="min-w-full">
-                  <div class="testimonial-card bg-card rounded-theme p-8 shadow-theme border-l-4 border-accent testimonial-card-narrow mx-2">
+                  <div class="testimonial-card bg-card rounded-theme p-8 shadow-theme border-l-4 border-accent testimonial-card-narrow">
                     <p class="text-light italic mb-6 leading-relaxed text-base">
                       "Pretty Woman" увидела новый свет вышла на все сто! ох, какие получились ножки!!
                     </p>
@@ -757,7 +802,7 @@
                 
                 
                 <div class="min-w-full">
-                  <div class="testimonial-card bg-card rounded-theme p-8 shadow-theme border-l-4 border-accent testimonial-card-narrow mx-2">
+                  <div class="testimonial-card bg-card rounded-theme p-8 shadow-theme border-l-4 border-accent testimonial-card-narrow">
                     <p class="text-light italic mb-6 leading-relaxed text-base">
                       Обложка для «Вдохновения» — это не вдохновение, это ВЗРЫВ! Глаза разбегаются, душа поёт, а соседи спрашивают, откуда у меня такой крутой журнал на столике. Браво!
                     </p>
@@ -772,7 +817,7 @@
                 
                 
                 <div class="min-w-full">
-                  <div class="testimonial-card bg-card rounded-theme p-8 shadow-theme border-l-4 border-accent testimonial-card-narrow mx-2">
+                  <div class="testimonial-card bg-card rounded-theme p-8 shadow-theme border-l-4 border-accent testimonial-card-narrow">
                     <p class="text-light italic mb-6 leading-relaxed text-base">
                       Ваш шрифт — это не буквы, это характер! Читать — одно удовольствие, а упаковывать в него слоганы — как надеть на идею идеальный костюм. Теперь любая надпись звучит с душой!
                     </p>
@@ -787,7 +832,7 @@
                 
                 
                 <div class="min-w-full">
-                  <div class="testimonial-card bg-card rounded-theme p-8 shadow-theme border-l-4 border-accent testimonial-card-narrow mx-2">
+                  <div class="testimonial-card bg-card rounded-theme p-8 shadow-theme border-l-4 border-accent testimonial-card-narrow">
                     <p class="text-light italic mb-6 leading-relaxed text-base">
                       Календарь на лето - 2025 такой сочный, что хочется сразу в отпуск! Даты не просто видны — они манят на пляж, пикник и приключения. Теперь я морально готов к следующему году уже сейчас!
                     </p>
@@ -817,7 +862,7 @@
       </section>
 
       <!-- Контакты -->
-      <section id="contact" class="section-py bg-accent-dark text-white max-w-full overflow-hidden">
+      <section id="contact" class="section-py bg-accent-dark text-white">
         <div class="max-w-[1200px] mx-auto container-padding">
           <h2 class="title-original font-akony text-white text-center px-4">Заинтересовались или остались вопросы?</h2>
           
@@ -866,7 +911,7 @@
     </main>
 
     <!-- Футер -->
-    <footer class="bg-accent text-white py-12 max-w-full overflow-hidden">
+    <footer class="bg-accent text-white py-12">
       <div class="max-w-[1200px] mx-auto container-padding">
         <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
           <div>
